@@ -1,0 +1,204 @@
+name: Chat-Manager
+version: ${project.version}
+main: net.DeltaWings.Minecraft.ChatManager.Main
+prefix: Chat Manager
+author: Delta Wings
+authors: [Aviortheking, LePhoenixArdent, Aipsyllone]
+description: Manage all the chat server functionnality !
+website: https://delta-wings.net
+commands:
+  staffchat:
+    description: staffchat
+    usage: /<command> <message>
+    aliases: [sc]
+  staffswitch:
+    description: switch receive mod
+    usage:
+    aliases: [ss]
+  channel:
+    description: create/modify/delete channels
+    aliases: [ch]
+  chat:
+    description: allow you to chat in channels
+    aliases: [c]
+  broadcast:
+    description: Change a global message
+    aliases: [bd]
+  clearchat:
+    description: Clear the global or the player chat
+    aliases: [cc]
+  chat-manager:
+    description: Manage the plugin
+    aliases: [cm, cmanager]
+  lockchat:
+    description: Lock/unlock the chat
+    aliases: [lc]
+  mute:
+    description: Mute a players from using command/chat
+  unmute:
+    description: Unmute a player
+  mutelist:
+    description: List muted players
+
+permissions:
+  chat-manager.*:
+    default: false
+    description: Allow the user to have all the plugin permissions.
+  children:
+    chat-manager.chat.*: true
+    chat-manager.broadcast: true
+    chat-manager.channel.*: true
+    chat-manager.admin.*: true
+    chat-manager.clear-chat.*: true
+    chat-manager.lock-chat.*: true
+    chat-manager.staff-chat.*: true
+    chat-manager.mute.*: true
+  chat-manager.broadcast:
+    default: op
+    description: Allow the user to broadcast messages
+  chat-manager.chat.*:
+    default: false
+    description: See childrens for more infos
+    children:
+      chat-manager.chat.prefix.*: true
+      chat-manager.chat.suffix.*: true
+      chat-manager.chat.colors: true
+  chat-manager.chat.prefix.*:
+    default: false
+    description: give the user the prefix NAME (see configuration file)
+  chat-manager.chat.suffix.*:
+    default: false
+    description: give the user the suffix NAME (see configuration file)
+  chat-manager.chat.colors:
+    default: op
+    description: Allow the user to use colors in chat
+  chat-manager.chat.color.*:
+    default: false
+    description: in-chat colors
+  chat-manager.channel.*:
+    default: true
+    description: Allow the user to user every channels functions
+    children:
+      chat-manager.channel.list: true
+      chat-manager.channel.create: true
+      chat-manager.channel.leave: true
+      chat-manager.channel.join: true
+      chat-manager.channel.invite: true
+      chat-manager.channel.disband: true
+      chat-manager.channel.kick: true
+      chat-manager.channel.promote: true
+      chat-manager.channel.demote: true
+      chat-manager.channel.chat: true
+  chat-manager.channel.list:
+    default: true
+    description: Allow the user to list all the channels
+  chat-manager.channel.create:
+    default: true
+    description: Allow the user to create a channel
+  chat-manager.channel.leave:
+    default: true
+    description: Allow the user to leave a channel
+  chat-manager.channel.join:
+    default: true
+    description: Allow the user to join a channel
+  chat-manager.channel.invite:
+    default: true
+    description: Allow the user to invite a plyer in his/her channel
+  chat-manager.channel.disband:
+    default: true
+    description: Allow the user to disband his/her channel
+  chat-manager.channel.promote:
+    default: true
+    description: Allow the user to promote a player in his/her channel
+  chat-manager.channel.kick:
+    default: true
+    description: Allow the user to kick a player in his/her channel
+  chat-manager.channel.demote:
+    default: true
+    description: Allow the user to demote a player in his/her channel
+  chat-manager.channel.chat:
+    default: true
+    description: Allow the user to speak in the channels chats
+  chat-manager.admin.*:
+    default: op
+    description: Give all the Administrator related permissions
+    children:
+      chat-manager.admin.reload: true
+      chat-manager.admin.notification: true
+  chat-manager.admin.reload:
+    default: op
+    description: Allow the Administrator to reload the plugin
+  chat-manager.admin.notification:
+    default: op
+    description: Allow the Administrator to receive plugin updates notifications
+  chat-manager.clear-chat.*:
+    default: op
+    description: Give all the clear chat related permissions
+    children:
+      chat-manager.clear-chat.global: true
+      chat-manager.clear-chat.player: true
+  chat-manager.clear-chat.global:
+    default: op
+    description: Allow the Admin to clear the global chat
+  chat-manager.clear-chat.player:
+    default: op
+    description: Allow the Admin to clear users personal chats
+  chat-manager.lockchat.*:
+    default: op
+    description: Give all the lock chat related permissions
+    children:
+      chat-manager.lockchat.lock: true
+      chat-manager.lockchat.ignore: true
+  chat-manager.lockchat.lock:
+    default: op
+    description: Allow the Admin to lock the chat
+  chat-manager.lockchat.ignore:
+    default: op
+    description: Allow the player to ignore the locked chat
+  chat-manager.staff-chat.*:
+    default: op
+    description: Give all the staff chat related permissions
+    children:
+      chat-manager.staff-chat.send: true
+      chat-manager.staff-chat.switch: true
+      chat-manager.staff-chat.read: true
+  chat-manager.staff-chat.send:
+    default: op
+    description: Allow the Admin to send staff chat messages
+  chat-manager.staff-chat.switch:
+    default: op
+    description: Allow the Admin switch if he/she want to receive staff chat messages
+  chat-manager.staff-chat.read:
+    default: op
+    description: Allow the Admin to read staff chat messages
+  chat-manager.mute.*:
+    default: op
+    description: Allow the admin to use all mute commands
+    children:
+      chat-manager.mute.all: true
+      chat-manager.unmute.all: true
+      chat-manager.mute.list: true
+  chat-manager.mute.all:
+    default: op
+    description: Allow the user to mute every players
+    children:
+      chat-manager.mute.chat: true
+      chat-manager.mute.cmd: true
+  chat-manager.mute.chat:
+    default: op
+    description: Allow the user to chat mute every players
+  chat-manager.mute.cmd:
+    default: op
+    description: Allow the user to command mute avery players
+  chat-manager.unmute.all:
+    default: op
+    description: Allow the user to unmute avery players
+  chat-manager.unmute.chat:
+    default: op
+    description: Allow the user to chat unmute avery players
+  chat-manager.unmute.cmd:
+    default: op
+    description: Allow the user to command unmute avery players
+  chat-manager.mute.list:
+    default: true
+    description: Allow the user to see the muted people
