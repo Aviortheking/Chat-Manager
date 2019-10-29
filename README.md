@@ -1,1 +1,1 @@
-WIKI !!!
+[WIKI !!!](https://git.delta-wings.net/Avior/Chat-Manager/wiki)
